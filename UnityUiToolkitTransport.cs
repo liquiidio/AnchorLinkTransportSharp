@@ -1,7 +1,6 @@
 using System;
 using AnchorLinkSharp;
 using Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml;
-
 using EosioSigningRequest;
 using UnityEngine;
 

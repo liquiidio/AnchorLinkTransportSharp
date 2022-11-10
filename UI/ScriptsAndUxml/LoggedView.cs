@@ -20,6 +20,7 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
         public SigningTimerOverlayView SigningTimerOverlayView;
         public SuccessOverlayView SuccessOverlayView;
         public FailureOverlayView FailureOverlayView;
+        public LoadingOverlayView LoadingOverlayView;
 
 
         /*
@@ -62,38 +63,15 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
         #region Button Binding
         private void BindButtons()
         {
+            _versionLabel.RegisterCallback<ClickEvent>(evt =>
+            {
+                Application.OpenURL(VersionUrl);
+            });
+
             _transferTokenButton.clickable.clicked += async () =>
             {
-                //await RestoreSession();
-
-                //try
-                //{
-                //    // throws if the account doesn't have enough CPU
-                //    await Transfer();
-                //}
-                //catch (Exception e)
-                //{
-                //    Debug.Log(JsonConvert.SerializeObject(e));
-                //}
-
-                //try
-                //{
-                //    Vote();
-                //}
-                //catch (Exception e)
-                //{
-                //    Debug.Log(e);
-                //    throw;
-                //}
-                //SigningTimerOverlayView.Show();
-                //SigningTimerOverlayView.StartCountdownTimer();
-
-
-
                 try
                 {
-                    await Login();
-                    await RestoreSession();
                     try
                     {
                         // throws if the account doesn't have enough CPU
@@ -103,6 +81,7 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
                     {
                         Debug.Log(JsonConvert.SerializeObject(e));
                     }
+                    await RestoreSession();
 
                 }
                 catch (Exception e)
@@ -122,14 +101,12 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
                     Debug.Log(e);
                     throw;
                 }
+                SuccessOverlayView.Hide();
+                LoadingOverlayView.Hide();
                 SigningTimerOverlayView.Show();
                 SigningTimerOverlayView.StartCountdownTimer();
             };
 
-            _versionLabel.RegisterCallback<ClickEvent>(evt =>
-            {
-                Application.OpenURL(VersionUrl);
-            });
         }
         #endregion
 
@@ -206,7 +183,7 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
                 data = new Dictionary<string, object>()
                 {
                     { "from", _session.Auth.actor},
-                    { "to", "test3.liq" },
+                    { "to", "teamgreymass" },
                     { "quantity", "0.0001 EOS" },
                     { "memo", "Anchor is the best! Thank you <3" }
                 }

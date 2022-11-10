@@ -70,6 +70,8 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
         public void Rebind()
         {
             _versionLabel.text = Version;
+
+            //TODO @Evans call the Qr-code generator here?
         }
 
         #endregion

@@ -75,6 +75,27 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
                 Application.OpenURL(VersionUrl);
             });
 
+            //login to your anchor wallet and a session is created for your account.
+            _launchAnchorButton.clickable.clicked += async () =>
+            {
+                try
+                {
+                    await Login();
+                    //await RestoreSession();
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(e);
+                    throw;
+                }
+                SuccessOverlayView.Hide();
+                LoggedView.Show();
+                LoggedView.Rebind(Session);
+                Hide();
+            };
+
+            #region testing
+
             //_launchAnchorButton.clickable.clicked += async () =>
             //{
             //    try
@@ -114,36 +135,9 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
             //    SigningTimerOverlayView.StartCountdownTimer();
             //};
 
+            #endregion
 
-            //login to your anchor wallet and a session is created for your account.
-            _launchAnchorButton.clickable.clicked += async () =>
-            {
-                try
-                {
-                    await Login();
-                    //await RestoreSession();
-                }
-                catch (Exception e)
-                {
-                    Debug.Log(e);
-                    throw;
-                }
-                SuccessOverlayView.Show();
 
-                //try
-                //{
-                //    Vote();
-                //}
-                //catch (Exception e)
-                //{
-                //    Debug.Log(e);
-                //    throw;
-                //}
-                Hide();
-                LoggedView.Show();
-                LoggedView.Rebind(Session);
-                SuccessOverlayView.Hide();
-            };
         }
         #endregion
 
@@ -208,6 +202,8 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
                 DidLogin();
         }
 
+        #region testing
+
         // transfer tokens using a session
         public async Task Transfer()
         {
@@ -251,6 +247,7 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
             });
         }
 
+        #endregion
 
         public void SignManual()
         {

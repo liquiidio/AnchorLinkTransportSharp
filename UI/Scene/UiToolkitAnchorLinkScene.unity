@@ -252,6 +252,7 @@ MonoBehaviour:
   SigningTimerOverlayView: {fileID: 1976276267}
   SuccessOverlayView: {fileID: 290643064}
   FailureOverlayView: {fileID: 941645872}
+  LoadingOverlayView: {fileID: 1828030223}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +759,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: a187da3a40ccd1e4ea2045d93d878edb, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 2d1079b0cc21d014fb0a61edf7cbaa81, type: 3}
-  m_SortingOrder: 1
+  m_SortingOrder: 2.04
 --- !u!114 &1828030223
 MonoBehaviour:
   m_ObjectHideFlags: 0
