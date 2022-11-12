@@ -9,10 +9,6 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
     public class LoadingOverlayView : ScreenBase
     {
         /*
-         * Connected Views
-         */
-
-        /*
          * Child-Controls
          */
 
@@ -27,9 +23,6 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
 
         void Start()
         {
-            //Grab a reference to the root element that is drawn
-            Root = GetComponent<UIDocument>().rootVisualElement;
-
             _closeViewButton = Root.Q<Button>("close-view-button");
 
             _versionLabel = Root.Q<Label>("version-label");
@@ -38,7 +31,6 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
 
             BindButtons();
         }
-
 
         #region Button Binding
 
@@ -52,10 +44,6 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
             });
 
         }
-        #endregion
-
-        #region other
-
         #endregion
     }
 }

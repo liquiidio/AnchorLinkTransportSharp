@@ -9,12 +9,6 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
     public class TimeoutOverlayView : ScreenBase
     {
         /*
-         * Connected Views
-         */
-        public QrCodeOverlayView QrCodeOverlayView;
-
-
-        /*
          * Child-Controls
          */
 
@@ -52,8 +46,8 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
             _signManuallyButton.clickable.clicked += () =>
             {
                 Hide();
-                QrCodeOverlayView.Show();
-                QrCodeOverlayView.SignManual();
+                //QrCodeOverlayView.Show();
+                //QrCodeOverlayView.SignManual();
             };
 
             _versionLabel.RegisterCallback<ClickEvent>(evt =>
@@ -62,11 +56,6 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
             });
 
         }
-        #endregion
-
-        #region other
-
-
         #endregion
     }
 }

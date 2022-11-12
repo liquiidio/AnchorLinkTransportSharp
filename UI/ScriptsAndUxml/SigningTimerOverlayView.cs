@@ -13,18 +13,6 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
     public class SigningTimerOverlayView : ScreenBase
     {
         /*
-         * Connected Views
-         */
-
-        public TimeoutOverlayView TimeoutOverlayView;
-        public QrCodeOverlayView QrCodeOverlayView;
-
-        /*
-         * Cloneable Controls
-         */
-
-
-        /*
          * Child-Controls
          */
 
@@ -60,10 +48,7 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
 
         private void BindButtons()
         {
-            _closeViewButton.clickable.clicked += () =>
-            {
-                this.Hide();
-            };
+            _closeViewButton.clickable.clicked += Hide;
 
             _versionLabel.RegisterCallback<ClickEvent>(evt =>
             {
@@ -73,8 +58,8 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
             _signManualLabel.RegisterCallback<ClickEvent>(evt =>
             {
                 Hide();
-                QrCodeOverlayView.Show();
-                QrCodeOverlayView.SignManual();
+                //QrCodeOverlayView.Show();
+                //QrCodeOverlayView.SignManual();
             });
 
         }
@@ -95,8 +80,8 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
                 _remainingTime = _pendingUntil - DateTime.UtcNow;
                 _singingTimerLabel.text = $"Sign - {_remainingTime.ToString("mm\\:ss")}";
             }
-            else
-                TimeoutOverlayView.Show();
+            //else
+                //TimeoutOverlayView.Show();
 
             _singingTimerLabel.schedule.Execute((ts) => ScheduleTimer(ts, _singingTimerLabel));
         }

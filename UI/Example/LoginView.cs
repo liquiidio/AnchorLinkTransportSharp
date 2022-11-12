@@ -9,20 +9,10 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
+namespace Assets.Packages.AnchorLinkTransportSharp.UI.Example
 {
     public class LoginView : ScreenBase
     {
-        /*
-         * Connected Views
-         */
-
-        public QrCodeOverlayView QrCodeOverlayView;
-
-        /*
-         * Cloneable Controls
-         */
-
 
         /*
          * Child-Controls
@@ -36,26 +26,39 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
         /*
          * Fields, Properties
          */
-
+        [SerializeField]public UnityUiToolkitTransport UnityUiToolkitTransport;
+        [SerializeField]private LoggedView LoggedView;
 
         void Start()
         {
             _loginButton = Root.Q<Button>("login-button");
             _versionLabel = Root.Q<Label>("version-label");
 
+            _versionLabel.text = Version;
+
             BindButtons();
-            Show(); 
+            Show();
         }
 
 
         #region Button Binding
         private void BindButtons()
         {
-            _loginButton.clickable.clicked += () =>
-            { 
-                QrCodeOverlayView.Show();
-                QrCodeOverlayView.Rebind();
-                this.Hide();
+            _loginButton.clickable.clicked +=  async () =>
+            {
+                try
+                {
+                   await UnityUiToolkitTransport.StartSession();
+                   LoggedView.Show();
+                   LoggedView.Rebind();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+                
+                Hide();
             };
 
             _versionLabel.RegisterCallback<ClickEvent>(evt =>
@@ -63,22 +66,6 @@ namespace Assets.Packages.AnchorLinkTransportSharp.UI.ScriptsAndUxml
                 Application.OpenURL(VersionUrl);
             });
         }
-        #endregion
-
-        #region Rebind
-
-        public void Rebind()
-        {
-            _versionLabel.text = Version;
-
-            //TODO @Evans call the Qr-code generator here?
-        }
-
-        #endregion
-
-        #region other
-
-
         #endregion
     }
 }

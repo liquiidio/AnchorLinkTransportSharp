@@ -15,16 +15,16 @@ namespace Assets.Packages.AnchorLinkTransportSharp
 {
     public abstract class UnityTransport : MonoBehaviour, ILinkTransport
     {
-        private readonly bool _requestStatus;
+        public readonly bool _requestStatus;
         private readonly bool _fuelEnabled;
-        private SigningRequest _activeRequest;
+        public SigningRequest _activeRequest;
+        public ProcessStartInfo Ps;
         private object _activeCancel; //?: (reason: string | Error) => void
         //internal Timer _countdownTimer;
         //internal Timer _closeTimer;
         public ILinkStorage Storage { get; }
 
         internal Coroutine counterCoroutine = null;
-
         public UnityTransport(TransportOptions options)
         {
             this._requestStatus = options.RequestStatus != false;
@@ -39,16 +39,14 @@ namespace Assets.Packages.AnchorLinkTransportSharp
             this._activeRequest = request;
             this._activeCancel = cancel;
             var uri = request.Encode(false, true);
-            Console.WriteLine(uri);
+            print(uri);
 
             // possible that this doesn't work in Unity and
-            // Application.OpenURL(uri); has to be called instead
-
-            var ps = new ProcessStartInfo(uri)
+            //Application.OpenURL(uri);// has to be called instead
+            Ps = new ProcessStartInfo(uri)
             {
                 UseShellExecute = true,
             };
-            Process.Start(ps);
 
             DisplayRequest(request);
         }
@@ -216,5 +214,10 @@ namespace Assets.Packages.AnchorLinkTransportSharp
         public abstract void DisplayRequest(SigningRequest request);
 
         public abstract void ShowDialog(string title = null, string subtitle = null, string type = null, System.Action action = null, object content = null);
+
+        public void StartAnchorDesktop()
+        {
+            Process.Start(Ps);
+        }
     }
 }
