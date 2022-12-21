@@ -69,9 +69,6 @@ VisualElement {
     height: 59px;
     flex-grow: 0;
     -unity-font: url('project://database/Assets/Packages/anchorlinktransportsharp/Examples/UiToolkit/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=1cd74a0089e942a4ba2129d8eb6be746&type=3#NotInter-Regular');
-    transition-duration: 0s;
-    transition-timing-function: ease;
-    transition-delay: 0s;
 }
 
 .version-visibility {
@@ -259,9 +256,6 @@ VisualElement {
     border-bottom-left-radius: 12px;
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
-    transition-timing-function: ease-in-out;
-    transition-duration: 400ms;
-    translate: 1px 0;
 }
 
 .copy-request-link-box {
@@ -273,9 +267,6 @@ VisualElement {
     opacity: 1;
     -unity-text-align: upper-center;
     height: 17.67px;
-    transition-duration: 200ms;
-    transition-timing-function: ease-in-out;
-    transition-delay: 400ms;
 }
 
 .anchor-logo {
@@ -291,10 +282,7 @@ VisualElement {
     width: 270px;
     height: 270px;
     background-color: rgb(19, 27, 51);
-    scale: 1 1;
     position: relative;
-    transition-duration: 400ms;
-    transition-timing-function: ease-in-out;
 }
 
 .link-box:selected {
@@ -309,11 +297,8 @@ VisualElement {
 
 .copied-link-label {
     width: 206px;
-    transition-timing-function: ease-in-out;
-    transition-delay: 400ms;
     font-size: 10px;
     color: rgb(255, 255, 255);
-    transition-duration: 200ms;
     background-color: rgb(19, 27, 51);
     -unity-text-align: upper-right;
     padding-left: 20px;
@@ -333,9 +318,6 @@ VisualElement {
     background-color: rgb(19, 27, 51);
     padding-left: 20px;
     padding-right: 20px;
-    transition-duration: 0ms;
-    transition-timing-function: ease;
-    transition-delay: 0ms;
     -unity-text-align: upper-right;
 }
 
