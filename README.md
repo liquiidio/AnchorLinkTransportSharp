@@ -5,4 +5,4 @@
 
 # Anchor Link Transport Sharp
 
-This package demonstrates how to perform actions (login, transfer etc) authenticated using the [Anchor Wallet](https://greymass.com/en/anchor/).
+This is a Submodule of [AnchorLinkSharp](https://github.com/liquiidio/AnchorLinkSharp). Please follow the Instructions in the AnchorLinkSharp Repository.
